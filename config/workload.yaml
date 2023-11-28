@@ -2,14 +2,22 @@ apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
   name: node-express-accelerator
-  namespace: default
+  namespace: app-testing
   labels:
     apps.tanzu.vmware.com/workload-type: web
     apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/carvel-package-workflow: "true"
     app.kubernetes.io/part-of: node-express-accelerator
 spec:
+  params:
+    - name: gitops_server_address
+      value: ssh://git@github.com/
+    - name: gitops_repository_owner
+      value: spines83
+    - name: gitops_repository_name
+      value: homelab-automation
   source:
     git:
-      url: <https URL for your generated project's Git repository>
+      url: https://github.com/spines83/node-express-accelerator.git
       ref:
         branch: main
