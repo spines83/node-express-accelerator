@@ -10,12 +10,18 @@ metadata:
     app.kubernetes.io/part-of: node-express-accelerator
 spec:
   params:
+    # - name: gitops_server_address
+    #   value: ssh://git@github.com/
     - name: gitops_server_address
-      value: ssh://git@github.com/
+      value: https://github.com/
     - name: gitops_repository_owner
       value: spines83
     - name: gitops_repository_name
       value: homelab-automation
+    - name: gitops_repository_prefix
+      value: 03_apps
+    - name: clusterBuilder
+      value: base-nodejs
   source:
     git:
       url: https://github.com/spines83/node-express-accelerator.git
